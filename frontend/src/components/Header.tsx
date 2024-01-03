@@ -1,5 +1,5 @@
-import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa"
+import { Link } from "react-router-dom"
 
 const Header = () => {
   return (
@@ -20,7 +20,7 @@ const Header = () => {
         </li>
       </ul>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

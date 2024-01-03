@@ -1,10 +1,5 @@
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { register, reset } from "../features/auth/authSlice";
-import { FaUser } from "react-icons/fa";
-import Spinner from "../components/Spinner";
+import { useState, useEffect } from "react"
+import { FaUser } from "react-icons/fa"
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -12,52 +7,22 @@ const Register = () => {
     email: "",
     password: "",
     password2: "",
-  });
+  })
 
-  const { name, email, password, password2 } = formData;
+  const { name, email, password, password2 } = formData
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.auth
-  );
-
-  useEffect(() => {
-    if (isError) {
-      toast.error(message);
-    }
-    if (isSuccess || user) {
-      navigate("/");
-    }
-    dispatch(reset());
-  }, [user, isError, isSuccess, message, navigate, dispatch]);
-
-  const onChange = (e) => {
+  const onChange = (e: any) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
-    }));
-  };
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-
-    if (password !== password2) {
-      toast.error("Passwords do not match");
-    } else {
-      const userData = {
-        name,
-        email,
-        password,
-      };
-      dispatch(register(userData));
-    }
-  };
-
-  if (isLoading) {
-    return <Spinner />;
+    }))
   }
+
+  const onSubmit = (e: any) => {
+    e.preventDefault()
+  }
+
+  useEffect(() => {}, [])
 
   return (
     <>
@@ -68,10 +33,11 @@ const Register = () => {
         <p>Please create an account</p>
       </section>
 
+      {/* registration form */}
       <section className="form">
         <form onSubmit={onSubmit}>
+          {/* name */}
           <div className="form-group">
-            {/* name */}
             <input
               type="text"
               className="form-control"
@@ -94,19 +60,19 @@ const Register = () => {
               onChange={onChange}
             />
           </div>
+          {/* password */}
           <div className="form-group">
-            {/* password */}
             <input
               type="password"
               className="form-control"
               id="password"
               name="password"
               value={password}
-              placeholder="Enter your password"
+              placeholder="Enter password"
               onChange={onChange}
             />
           </div>
-          {/* confirm password */}
+          {/* confirm password  */}
           <div className="form-group">
             <input
               type="password"
@@ -114,7 +80,7 @@ const Register = () => {
               id="password2"
               name="password2"
               value={password2}
-              placeholder="Confirm your password"
+              placeholder="Confirm password"
               onChange={onChange}
             />
           </div>
@@ -126,7 +92,7 @@ const Register = () => {
         </form>
       </section>
     </>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register

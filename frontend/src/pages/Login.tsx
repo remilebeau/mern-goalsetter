@@ -1,24 +1,26 @@
-import { useState, useEffect } from "react";
-import { FaSign, FaSignInAlt } from "react-icons/fa";
+import { useState, useEffect } from "react"
+import { FaSignInAlt } from "react-icons/fa"
 
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-  });
+  })
 
-  const { email, password } = formData;
+  const { email, password } = formData
 
-  const onChange = (e) => {
+  const onChange = (e: any) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
-    }));
-  };
+    }))
+  }
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-  };
+  const onSubmit = (e: any) => {
+    e.preventDefault()
+  }
+
+  useEffect(() => {}, [])
 
   return (
     <>
@@ -29,6 +31,7 @@ const Login = () => {
         <p>Login and start setting goals</p>
       </section>
 
+      {/* registration form */}
       <section className="form">
         <form onSubmit={onSubmit}>
           {/* email */}
@@ -51,11 +54,10 @@ const Login = () => {
               id="password"
               name="password"
               value={password}
-              placeholder="Enter your password"
+              placeholder="Enter password"
               onChange={onChange}
             />
           </div>
-          {/* submit button */}
           <div className="form-group">
             <button type="submit" className="btn btn-block">
               Submit
@@ -64,7 +66,7 @@ const Login = () => {
         </form>
       </section>
     </>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
